@@ -9,7 +9,7 @@ Los amplificadores se clasifican según su forma de amplificar la señal de entr
 Al igual que en el calse B, se utiliza un par de transistores push-pull, pero se elimina el curce por cero característico del amplificador de clase B. Este tipo de amplificador mejora el rendimiento típico de un clase A (al rededor del 25\%) a un 78\% aproximadamente, manteniendo la linealidad.
 
 \subsection{Calculo de Disipador}
-El calulo del disipador necesario para nuetsra apicaicon se realizo en base a la informacion suministrada por catedra y mediante la siguiente formula:
+El calulo del disipador necesario para esta apicaicon se realizó en base a la informacion suministrada por la catedra y mediante la siguiente ecuación:
 
 \underline{RESISTENCIA TERMICA DISIPADOR - AMBIENTE:}
 
@@ -30,15 +30,15 @@ El consumo de Potencia fue extraido de la siguiente grafica:
 \end{figure}
 
 Se puede ver en la Figura \ref{fig:Potencia} que dado nuestra alimentacion partida de 12V y un parlante de 8 Ohm presenta una disipacion (P_{d}) de 4.2W.
-Si bien el datasheet especifica que su T_{jmax} = 150 {^\circ C}, se utiliza la temperatura de shut-down estipulada a 145 {^\circ C}
-Resistencia de Juntura-Encapsulado R_{\theta J} = 3 \frac{^\circ C}{W}.
-Resistencia de Encapsuldao-Disipador teniendo en cuenta la mica y la grasa siliconada R_{\theta CD} = 1.2 \frac{^\circ C}{W}.
-Temperatura ambiente T_{a} = 40 {^\circ C}
+Si bien el datasheet especifica que su $T_{jmax} = 150 {^\circ C}$, se utiliza la temperatura de shut-down estipulada a 145 ${^\circ C}$.
+Resistencia de Juntura-Encapsulado $R_{\theta J} = 3 \frac{^\circ C}{W}$.
+Resistencia de Encapsuldao-Disipador teniendo en cuenta la mica y la grasa siliconada $R_{\theta CD} = 1.2 \frac{^\circ C}{W}$.
+Temperatura ambiente $T_{a} = 40 {^\circ C}$
 Factor de Seguridad k = 0.6
-T_{jmaxseg} = 145 {^\circ C} * k = 87 {^\circ C}
+$T_{jmaxseg} = 145 {^\circ C} * k = 87 {^\circ C}$
 
-Si relizamos el calculo pertinente resulta en una R_{DA} = 7 \frac{^\circ C}{W}.
+Si relizamos el calculo pertinente resulta en una $R_{DA} = 7 \frac{^\circ C}{W}$.
 
 Con esta Resistencia Disipador-Ambiente buscamos un disipador adecuado en:
--- https://www.disipadores.com/tabla_generica.php -- 
-Y se termino por elegir un ZD39. Si bien laadquisicion de etse no fue posible, se obtuvo un disipador de dimensiones similares.
+\url{-- https://www.disipadores.com/tabla_generica.php --}
+Y se termino por elegir un ZD39. Si bien la adquisicion de este no fue posible, se obtuvo un disipador de dimensiones similares.

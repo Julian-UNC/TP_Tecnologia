@@ -16,9 +16,9 @@ Para representar fielmente las características del amplificador integrado, se i
 % =========================================================================
 % SIMULACIÓN INTEGRAL DEL AMPLIFICADOR CON TDA2030
 % =========================================================================
-\section{Análisis y Caracterización por Simulación del TDA2030}
+\subsection{Análisis y Caracterización por Simulación del TDA2030}
 
-\subsection*{Descripción del Esquema de Simulación}
+\subsubsection*{Descripción del Esquema de Simulación}
 El circuito simulado consta del integrado TDA2030 configurado con alimentación simétrica de $\pm 12\,\text{V}$ ($V_{s+} = +12\,\text{V}$, $V_{s-} = -12\,\text{V}$) y una red de realimentación dada por $R_4 = 22\,\text{k}\Omega$ y $R_2 = 680\,\Omega$, estableciendo una ganancia teórica en tensión de:
 \begin{equation}
     A_v = 1 + \frac{R_4}{R_2} = 1 + \frac{22\,\text{k}\Omega}{680\,\Omega} \approx 33.35 \quad (30.46\,\text{dB})
@@ -52,7 +52,7 @@ Se realizó un barrido de frecuencia desde $10\,\text{Hz}$ hasta $100\,\text{kHz
 \end{figure}
 
 \subsubsection{3. Respuesta Temporal y Análisis Transitorio (.tran)}
-Se applied un análisis temporal mediante \texttt{.tran 0 9.5m 9m} inyectando una señal senoidal de entrada $V_{in} = 5\,\text{mV}_{\text{pico}}$ a $10\,\text{kHz}$. Se midió la excursión pico a pico de la tensión sobre la carga de salida verificando una señal limpia y libre de distorsión por cruce.
+Se aplicó un análisis temporal mediante \texttt{.tran 0 9.5m 9m} inyectando una señal senoidal de entrada $V_{in} = 5\,\text{mV}_{\text{pico}}$ a $10\,\text{kHz}$. Se midió la excursión pico a pico de la tensión sobre la carga de salida verificando una señal limpia y libre de distorsión por cruce.
 
 \begin{figure}[H]
     \centering

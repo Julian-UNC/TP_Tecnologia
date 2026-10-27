@@ -1,6 +1,6 @@
 
 \section{Diseño en KiCAD}
-Aqui se comentaran los pasos relizados para el diseño del esquematico y por consiguiente PCB.
+Aqui se comentaran los pasos relizados para el diseño del esquematico y por consiguiente del PCB.
 Se empezo por seleccionar al amplificador de audio TDA2030 ya que es un modelo estandar y de facil obtencion, luego se observaron los circuitos disponibles en el datasheet del componente y se eligio la aplicacion en fuente partida
 
 \begin{figure}[h]
@@ -20,7 +20,7 @@ Se empezo por seleccionar al amplificador de audio TDA2030 ya que es un modelo e
     \end{minipage}
 \end{figure}
 
-Tanto R5 como C8 no fueron agregados al diseño por la siguiente razon, esta red RC, dispuesta en paralelo con la resistencia de realimentación principal (R1), tiene el propósito de crear un polo que reduce la ganancia a frecuencias muy altas (frecuencias supersónicas). Su uso se reserva para limitar el ancho de banda y mitigar riesgos de oscilación, esto nos parecio innecesario para los requisitos del trabajo.
+Tanto R5 como C8 no fueron agregados al diseño por la siguiente razon: esta red RC, dispuesta en paralelo con la resistencia de realimentación principal (R1), tiene el propósito de crear un polo que reduce la ganancia a frecuencias muy altas (frecuencias supersónicas). Su uso se reserva para limitar el ancho de banda y mitigar riesgos de oscilación, resultando innecesario para los requisitos del trabajo.
 
 \begin{figure}[h]
     \centering
@@ -37,4 +37,4 @@ Se puede ver en la Figura \ref{fig:PCBTDA} el diseño de montaje de la placa, se
 - Colocado del Amplificador en los extremos de la placa para el anexo de su disipador
 - Montaje de la resistencia de R4 a distancia suficiente de los componentes para evitar calentamientos
 
-Una vez terminado este proceso se genera un archivo pdf en el cual se encuentran 4 copias del PCB en escala 1:1, de color monocromatico y con las capas dibujadas de "Bottom Cupper"(B.Cu, Cobre por debajo) y "Edge.Cuts" (Cortes de esquina)
+Una vez terminado este proceso se genera un archivo pdf en el cual se encuentran 4 copias del PCB en escala 1:1, de color monocromatico y con las capas dibujadas de "Bottom Cupper"(B.Cu, Cobre por debajo) y $"Edge.Cuts"$ (Cortes de esquina)
