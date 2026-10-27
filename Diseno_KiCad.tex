@@ -1,0 +1,12 @@
+\section{Diseño en KiCad}
+En esta sección se detalla el flujo de trabajo en el entorno EDA KiCad:
+\subsection{Esquemático (\textit{Eeschema})}
+Se ingresó el esquema eléctrico asignando los huellas (\textit{footprints}) correspondientes para cada componente pasivo y el encapsulado TO-220 del TDA2030.
+
+\subsection{Diseño del PCB (\textit{Pcbnew})}
+Para garantizar un trazado óptimo y reducir interferencias, se aplicaron los siguientes criterios:
+\begin{itemize}[label=\small\color{primary}$\blacksquare$]
+    \item Pistas de alimentación y salida hacia el parlante con ancho incrementado para soportar corrientes pico elevados.
+    \item Planos de masa (GND) para minimizar el ruido inducido.
+    \item Disposición física adecuada para permitir el montaje del disipador de calor térmico.
+\end{itemize}

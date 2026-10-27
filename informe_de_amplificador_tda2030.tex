@@ -12,22 +12,13 @@
 \usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
-\usepackage{tocloft}
-\usepackage[hidelinks, colorlinks=true, linkcolor=primary, urlcolor=primary, citecolor=primary]{hyperref}
+\usepackage[colorlinks=true, linkcolor=primary, urlcolor=primary, citecolor=primary]{hyperref}
 
 % Definición de paleta de colores institucional / académica
 \definecolor{primary}{RGB}{15, 76, 129}      % Azul clásico institucional
 \definecolor{secondary}{RGB}{90, 105, 120}   % Gris azulado para subtítulos/líneas
 \definecolor{darktext}{RGB}{33, 37, 41}      % Texto oscuro principal
 \definecolor{lightbg}{RGB}{248, 249, 250}    % Fondo claro para cajas/resumen
-
-% Configuración del índice (Table of Contents) elegante
-\renewcommand{\cfttoctitlefont}{\large\bfseries\color{primary}\MakeUppercase}
-\renewcommand{\cftsecfont}{\bfseries\color{darktext}}
-\renewcommand{\cftsubsecfont}{\normalfont\color{darktext}}
-\renewcommand{\cftsecpagefont}{\bfseries\color{primary}}
-\renewcommand{\cftdotsep}{2.5}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
 % Formato estilizado de Secciones
 \titleformat{\section}
@@ -52,55 +43,10 @@
 \begin{document}
 
 % ==============================================================================
-% PORTADA PROFESIONAL
+% PORTADA (Omitida aquí por brevedad, usa la tuya anterior)
 % ==============================================================================
-\begin{titlepage}
-    \centering
-    \vspace*{1cm}
-    
-    {\Huge\bfseries\color{primary} UNIVERSIDAD NACIONAL}\\[0.4cm]
-    {\Large\bfseries\color{secondary} FACULTAD DE INGENIERÍA}\\[0.2cm]
-    {\large CÁTEDRA DE TECNOLOGÍA ELECTRÓNICA}\\[2.5cm]
-    
-    \rule{\linewidth}{1.5pt}\\[0.4cm]
-    {\huge\bfseries\color{primary} INFORME TÉCNICO DE LABORATORIO}\\[0.3cm]
-    {\Large\bfseries Dise\~no, Simulación, PCB y Montaje de Amplificador de Potencia con C.I. TDA2030}\\[0.2cm]
-    \rule{\linewidth}{1.5pt}\\[3cm]
-    
-    \vfill
-    
-    \begin{minipage}{0.48\textwidth}
-        \begin{flushleft} \large
-            \textbf{\color{primary}Integrantes / Estudiantes:}\\
-            [Dalmasso, Agustin]\\
-            \small Legajo: [46541615]\\
-             [Castilla, Felipe]\\
-            \small Legajo: [45886652]\\
-             [Faro, Tomas Martin]\\
-            \small Legajo: [43230185]\\
-             [López Bernal, Julian]\\
-            \small Legajo: [451D07175]\\
-            
-        \end{flushleft}
-    \end{minipage}
-    \begin{minipage}{0.48\textwidth}
-        \begin{flushright} \large
-            \textbf{\color{primary}Cátedra \& Docentes:}\\
-            Prof. Titular: [Nombre]\\
-            JTP: [Nombre]
-        \end{flushright}
-    \end{minipage}
-
-    \vfill
-    \vspace{1cm}
-    {\large\color{secondary}\today}
-\end{titlepage}
 
 \newpage
-
-% ==============================================================================
-% RESUMEN Y TABLA DE CONTENIDOS (ÍNDICE)
-% ==============================================================================
 \pagenumbering{roman}
 
 \begin{abstract}
@@ -109,7 +55,14 @@
 
 \vspace{1.5em}
 
-\tableofcontents
+% ==============================================================================
+% ÍNDICE SEGURO (Sin tocloft)
+% ==============================================================================
+{
+  \hypersetup{linkcolor=darktext} % Opcional: para que los enlaces del índice sean sobrios
+  \renewcommand{\contentsname}{\large\bfseries\color{primary}ÍNDICE GENERAL}
+  \tableofcontents
+}
 
 \newpage
 \pagenumbering{arabic}
@@ -117,86 +70,13 @@
 % ==============================================================================
 % CONTENIDO DEL INFORME
 % ==============================================================================
-
-\section{Introducción y Objetivos}
-El propósito de este trabajo práctico es aplicar las metodologías de diseño y fabricación de circuitos electrónicos mediante el desarrollo de un amplificador de audio operacional de potencia. Los objetivos principales incluyen:
-\begin{itemize}[label=\small\color{primary}$\blacksquare$]
-    \item Comprender las etapas fundamentales de amplificación de señal en baja frecuencia.
-    \item Diseñar la placa de circuito impreso (PCB) en KiCad a partir del esquema eléctrico del datasheet.
-    \item Realizar la simulación circuital para predecir el comportamiento en frecuencia y potencia.
-    \item Montar y depurar el prototipo físico, analizando las variaciones respecto a la simulación.
-\end{itemize}
-
-\section{Marco Teórico}
-\subsection{¿Qué es un Amplificador de Audio?}
-Un amplificador de audio es un circuito electrónico cuya función principal es incrementar la amplitud de una señal de entrada variable en el tiempo (normalmente proveniente de fuentes como micrófonos, reproductores de audio o instrumentos) para entregar una potencia mayor a una carga o transductor, tal como un altavoz o parlante.
-
-\subsection{Clasificación de Amplificadores y Etapa de Potencia}
-Los amplificadores de potencia se clasifican según su punto de operación en la recta de carga (Clase A, B, AB, D, entre otros). El circuito integrado TDA2030 opera principalmente en \textbf{Clase AB}, combinando la alta linealidad de la Clase A con la eficiencia energética de la Clase B, reduciendo la distorsión por cruce en la señal de salida.
-
-\section{TDA2030 y Criterios de Diseño}
-\subsection{Justificación de la Selección del TDA2030}
-El TDA2030 es un circuito integrado monolítico encapsulado en TO-220, concebido para su uso como amplificador de baja frecuencia en clase AB. Es ampliamente utilizado en entornos educativos e industriales debido a:
-\begin{itemize}[label=\small\color{primary}$\blacksquare$]
-    \item Capacidad de entregar hasta 14 W de potencia de salida sobre una carga de $4\,\Omega$.
-    \item Amplio rango de tensión de alimentación (hasta $\pm 18$\,V en fuente simétrica o 36\,V en fuente simple).
-    \item Protecciones integradas contra cortocircuitos y sobretemperatura.
-    \item Bajo costo y requerimiento de pocos componentes externos.
-\end{itemize}
-
-\subsection{Análisis del Circuito Estándar (Datasheet)}
-El diseño adoptado corresponde al esquema típico provisto por el fabricante con alimentación simple (o simétrica, según corresponda). 
-
-Las ecuaciones de la ganancia en tensión en banda media vienen dadas por la red de realimentación negativa:
-\begin{equation}
-    A_v = 1 + \frac{R_3}{R_2}
-\end{equation}
-
-Asimismo, se consideran las frecuencias de corte de los filtros de desacoplo de entrada y salida:
-\begin{equation}
-    f_{c,in} = \frac{1}{2\pi \cdot R_{in} \cdot C_{in}}
-\end{equation}
-
-\section{Diseño en KiCad}
-En esta sección se detalla el flujo de trabajo en el entorno EDA KiCad:
-\subsection{Esquemático (\textit{Eeschema})}
-Se ingresó el esquema eléctrico asignando los huellas (\textit{footprints}) correspondientes para cada componente pasivo y el encapsulado TO-220 del TDA2030.
-
-\subsection{Diseño del PCB (\textit{Pcbnew})}
-Para garantizar un trazado óptimo y reducir interferencias, se aplicaron los siguientes criterios:
-\begin{itemize}[label=\small\color{primary}$\blacksquare$]
-    \item Pistas de alimentación y salida hacia el parlante con ancho incrementado para soportar corrientes pico elevados.
-    \item Planos de masa (GND) para minimizar el ruido inducido.
-    \item Disposición física adecuada para permitir el montaje del disipador de calor térmico.
-\end{itemize}
-
-\section{Simulación Circuital}
-Se realizaron simulaciones en entorno SPICE (o el simulador integrado en KiCad/LTspice) para evaluar:
-\begin{enumerate}
-    \item \textbf{Análisis de Respuesta en Frecuencia (AC Analysis):} Obtención del ancho de banda ($f_L$ y $f_H$) a $-3$\,dB.
-    \item \textbf{Análisis Transitorio (Transient Analysis):} Verificación de la amplitud máxima de salida antes de alcanzar el recorte o saturación (\textit{clipping}).
-\end{enumerate}
-
-\section{Montaje Físico}
-Se describe el proceso de ensamble sobre la placa de circuito impreso:
-\begin{itemize}[label=\small\color{primary}$\blacksquare$]
-    \item Inserción y soldadura de componentes (comenzando por componentes de menor perfil como resistencias y diodos, hasta los condensadores electrolíticos y el TDA2030).
-    \item Montaje del disipador térmico con pasta de silicona conductora y aislante de mica/silicona.
-    \item Inspección visual y prueba de continuidad previos a la energización.
-\end{itemize}
-
-\section{Depuración y Funcionamiento}
-\subsection{Pruebas de Laboratorio}
-Se conectó la placa a una fuente de alimentación regulada y se aplicó un generador de funciones en la entrada, midiendo la salida mediante un osciloscopio y una carga resistiva de prueba ($4\,\Omega$ / $8\,\Omega$).
-
-\subsection{Resultados Obtenidos y Mediciones}
-\begin{itemize}[label=\small\color{primary}$\blacksquare$]
-    \item \textbf{Ganancia medida:} [Insertar valor medido $V_{out}/V_{in}$].
-    \item \textbf{Potencia máxima sin distorsión:} $P_{out} = \frac{V_{rms}^2}{R_L} = \dots$
-    \item \textbf{Comportamiento térmico:} Observaciones sobre la temperatura de trabajo con el disipador seleccionado.
-\end{itemize}
-
-\section{Conclusiones}
-El amplificador basado en el TDA2030 demostró cumplir satisfactoriamente con las especificaciones del fabricante bajo el esquema estándar. Se constataron las bondades de la simulación previa para prever el comportamiento real, así como la importancia de un correcto trazado de PCB y un dimensionado térmico adecuado en circuitos de potencia de audio.
+\input{Intro}
+\input{Marco_Teorio}
+\input{Diseno_KiCad}
+\input{Simulacion}
+\input{Montaje}
+\input{Depuracion}
+\input{Conclusion}
+% ... tus inputs o secciones ...
 
 \end{document}
