@@ -7,3 +7,38 @@ Un amplificador de audio es un circuito electrónico cuya función principal es 
 Los amplificadores se clasifican según su forma de amplificar la señal de entrada, separandose en clase A, B, AB, D, entre otros. El amplificador TDA2030 es de clase AB, el cual combina aspectos de los amplificadores de clase A y B.
 
 Al igual que en el calse B, se utiliza un par de transistores push-pull, pero se elimina el curce por cero característico del amplificador de clase B. Este tipo de amplificador mejora el rendimiento típico de un clase A (al rededor del 25\%) a un 78\% aproximadamente, manteniendo la linealidad.
+
+\subsection{Calculo de Disipador}
+El calulo del disipador necesario para nuetsra apicaicon se realizo en base a la informacion suministrada por catedra y mediante la siguiente formula:
+
+\underline{RESISTENCIA TERMICA DISIPADOR - AMBIENTE:}
+
+\[
+T_{Jmaxseg} - T_a = P_d(R_{\theta JC} + R_{\theta CD} + R_{DA})
+\]
+
+\[
+R_{DA} = \frac{T_{jmaxseg} - T_a}{P_d} - (R_{\theta JC} + R_{\theta C} )
+\]
+
+El consumo de Potencia fue extraido de la siguiente grafica:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/CurvaPOT.png}
+    \caption{Potencia en funcion de la alimentacion}
+    \label{fig:Potencia}
+\end{figure}
+
+Se puede ver en la Figura \ref{fig:Potencia} que dado nuestra alimentacion partida de 12V y un parlante de 8 Ohm presenta una disipacion (P_{d}) de 4.2W.
+Si bien el datasheet especifica que su T_{jmax} = 150 {^\circ C}, se utiliza la temperatura de shut-down estipulada a 145 {^\circ C}
+Resistencia de Juntura-Encapsulado R_{\theta J} = 3 \frac{^\circ C}{W}.
+Resistencia de Encapsuldao-Disipador teniendo en cuenta la mica y la grasa siliconada R_{\theta CD} = 1.2 \frac{^\circ C}{W}.
+Temperatura ambiente T_{a} = 40 {^\circ C}
+Factor de Seguridad k = 0.6
+T_{jmaxseg} = 145 {^\circ C} * k = 87 {^\circ C}
+
+Si relizamos el calculo pertinente resulta en una R_{DA} = 7 \frac{^\circ C}{W}.
+
+Con esta Resistencia Disipador-Ambiente buscamos un disipador adecuado en:
+-- https://www.disipadores.com/tabla_generica.php -- 
+Y se termino por elegir un ZD39. Si bien laadquisicion de etse no fue posible, se obtuvo un disipador de dimensiones similares.
