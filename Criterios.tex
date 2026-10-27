@@ -1,0 +1,22 @@
+\section{TDA2030 y Criterios de Diseño}
+\subsection{Justificación de la Selección del TDA2030}
+El TDA2030 es un circuito integrado monolítico encapsulado en TO-220, concebido para su uso como amplificador de baja frecuencia en clase AB. Es ampliamente utilizado en entornos educativos e industriales debido a:
+\begin{itemize}[label=\small\color{primary}$\blacksquare$]
+    \item Capacidad de entregar hasta 14 W de potencia de salida sobre una carga de $4\,\Omega$.
+    \item Amplio rango de tensión de alimentación (hasta $\pm 18$\,V en fuente simétrica o 36\,V en fuente simple).
+    \item Protecciones integradas contra cortocircuitos y sobretemperatura.
+    \item Bajo costo y requerimiento de pocos componentes externos.
+\end{itemize}
+
+\subsection{Análisis del Circuito Estándar (Datasheet)}
+El diseño adoptado corresponde al esquema típico provisto por el fabricante con alimentación simple (o simétrica, según corresponda). 
+
+Las ecuaciones de la ganancia en tensión en banda media vienen dadas por la red de realimentación negativa:
+\begin{equation}
+    A_v = 1 + \frac{R_3}{R_2}
+\end{equation}
+
+Asimismo, se consideran las frecuencias de corte de los filtros de desacoplo de entrada y salida:
+\begin{equation}
+    f_{c,in} = \frac{1}{2\pi \cdot R_{in} \cdot C_{in}}
+\end{equation}

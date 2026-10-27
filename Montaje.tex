@@ -1,7 +1,26 @@
 \section{Montaje Físico}
-Se describe el proceso de ensamble sobre la placa de circuito impreso:
-\begin{itemize}[label=\small\color{primary}$\blacksquare$]
-    \item Inserción y soldadura de componentes (comenzando por componentes de menor perfil como resistencias y diodos, hasta los condensadores electrolíticos y el TDA2030).
-    \item Montaje del disipador térmico con pasta de silicona conductora y aislante de mica/silicona.
-    \item Inspección visual y prueba de continuidad previos a la energización.
+
+El proceso de fabricación de la PCB consta de los siguientes pasos, luego del diseño de la PCB:
+
+\begin{itemize}
+  \item Transferencia del impreso a la placa
+  \item Limpieza y perforación de la placa
+  \item Soldado de componentes
+  \item Depuración de la placa
 \end{itemize}
+
+Debido a su extención y relevancia, la depuración tendrá su propio apartado, el resto de los items se dearrollarán a continuación.
+
+\subsection{Transferencia del Impreso}
+
+Para transferir las pistas del impreso a la placa, se pegó el impreso al cobre de la placa, de manera que las pistas queden en contacto con este, y se calentó con una plancha eléctrica apoyando sobre el papel. Una vez transferídas las pistas se lavó la placa en agua fría para retirar el exceso de papel y se sumergió en un recipiente con cloruro férrico a baño maría.
+
+\subsection{Limpieza y Perforación}
+
+Una vez que el cloruro retiró el cobre expuesto de la placa, se retiró la placa, se limió el cloruro y se expuso el cobre lijando la capa protectora de las pistas con virulana. Con la PCB limpia se hicieron las perforaciones necesarias para introducir los componentes de montaje perforante, utilizando una broca de 1 mm.
+
+\section{Soldado de Componentes}
+
+Se empezó soldando los componentes de menor altura sobre elmontaje hacia los de mayor altura, de manera que se sosstuvieran correctamente el componente que se estuviera soldando en el momento, por ejemplo, se soldaron primero las resistencias, de manera que estan estuvieran apoyadas sobre la superficie de trabajo, luego los capacitores, ya que son más altos y así sucesivamente.
+
+Como el amplificador es el elemento más sensible a la temperatura, a la vez que es el componente más alto, se soldó una vez se hubieran soldado el resto de los componentes, para proteger el integrado.
