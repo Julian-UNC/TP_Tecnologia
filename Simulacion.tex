@@ -1,6 +1,61 @@
-\section{Simulación Circuital}
-Se realizaron simulaciones en entorno SPICE (o el simulador integrado en KiCad/LTspice) para evaluar:
-\begin{enumerate}
-    \item \textbf{Análisis de Respuesta en Frecuencia (AC Analysis):} Obtención del ancho de banda ($f_L$ y $f_H$) a $-3$\,dB.
-    \item \textbf{Análisis Transitorio (Transient Analysis):} Verificación de la amplitud máxima de salida antes de alcanzar el recorte o saturación (\textit{clipping}).
-\end{enumerate}
+
+\section{Simulación en LTSpice}
+
+\subsection{Fundamentación de Directivas SPICE Empleadas}
+Para la caracterización del amplificador integrado de potencia basado en el C.I. \textbf{TDA2030}, se empleó el entorno de simulación \textbf{LTspice®}. Con el objetivo de analizar y estandarizar la obtención de los parámetros eléctricos principales, se utilizaron las siguientes directivas fundamentales:
+
+\begin{itemize}
+    \item \texttt{.op} \textbf{(Punto de Operación DC):} Evalúa las tensiones continuas en todos los nodos y las corrientes de reposo con señal nula, permitiendo verificar la polarización de la etapa de salida en Clase AB del TDA2030 y el consumo de potencia estática.
+    \item \texttt{.ac <type> <n> <fstart> <fstop>} \textbf{(Análisis de Pequeña Señal AC):} Realiza un barrido frecuencial de pequeña señal para obtener la respuesta en frecuencia (Diagrama de Bode), determinando las frecuencias de corte inferior ($f_L$) y superior ($f_H$) a $-3\,\text{dB}$, así como la ganancia en banda media y las impedancias de entrada y salida ($Z_{in}$, $Z_{out}$).
+    \item \texttt{.tran <tstep> <tstop>} \textbf{(Análisis Temporal de Transitorios):} Simula la respuesta dinámica en el dominio del tiempo frente a señales senoidales de entrada, evaluando la amplitud pico a pico de salida, el tiempo de establecimiento y la simetría de la forma de onda.
+\end{itemize}
+
+\subsubsection{Modelo SPICE del C.I. TDA2030}
+Para representar fielmente las características del amplificador integrado, se incorporó la definición del subcircuito SPICE mediante la directiva \texttt{.include TDA2030.sub}.
+
+% =========================================================================
+% SIMULACIÓN INTEGRAL DEL AMPLIFICADOR CON TDA2030
+% =========================================================================
+\section{Análisis y Caracterización por Simulación del TDA2030}
+
+\subsection*{Descripción del Esquema de Simulación}
+El circuito simulado consta del integrado TDA2030 configurado con alimentación simétrica de $\pm 12\,\text{V}$ ($V_{s+} = +12\,\text{V}$, $V_{s-} = -12\,\text{V}$) y una red de realimentación dada por $R_4 = 22\,\text{k}\Omega$ y $R_2 = 680\,\Omega$, estableciendo una ganancia teórica en tensión de:
+\begin{equation}
+    A_v = 1 + \frac{R_4}{R_2} = 1 + \frac{22\,\text{k}\Omega}{680\,\Omega} \approx 33.35 \quad (30.46\,\text{dB})
+\end{equation}
+
+Asimismo, incluye el filtro de acoplo de entrada ($C_1 = 1\,\mu\text{F}$), la red de estabilización Zobel a la salida ($R_{out} = 1\,\Omega$, $C_7 = 220\,\text{nF}$), los diodos de protección anti-retorno ($D_1$, $D_2$) y los condensadores de desacoplo de fuente ($C_3, C_5, C_4, C_6$).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{Simu-Spice.jpg}
+    \caption{Esquemático completo del amplificador con TDA2030 en LTspice.}
+    \label{fig:circuito_tda2030}
+\end{figure}
+
+\subsubsection{1. Polarización y Consumo Estático (.op)}
+Mediante el análisis \texttt{.op} se verificaron las tensiones DC de nodo en reposo, constatando una tensión de salida nula ($V_{out,DC} \approx 0\,\text{V}$) gracias a la simetría de la alimentación, y registrando la corriente de reposo del integrado ($I_q \approx 30\,\text{mA}$).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{op.jpg}
+    \caption{Punto de operación continuo (.op) y polarización estática de nodos.}
+\end{figure}
+
+\subsubsection{2. Respuesta en Frecuencia y Ancho de Banda (.ac)}
+Se realizó un barrido de frecuencia desde $10\,\text{Hz}$ hasta $100\,\text{kHz}$ con la directiva \texttt{.ac dec 100 10 100k} para determinar la curva de Bode del amplificador y el ancho de banda a $-3\,\text{dB}$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Simu-ac-BW.jpg}
+    \caption{Respuesta en frecuencia (Análisis AC) y ancho de banda del amplificador.}
+\end{figure}
+
+\subsubsection{3. Respuesta Temporal y Análisis Transitorio (.tran)}
+Se applied un análisis temporal mediante \texttt{.tran 0 9.5m 9m} inyectando una señal senoidal de entrada $V_{in} = 5\,\text{mV}_{\text{pico}}$ a $10\,\text{kHz}$. Se midió la excursión pico a pico de la tensión sobre la carga de salida verificando una señal limpia y libre de distorsión por cruce.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Salida-10K-5mV.jpg}
+    \caption{Respuesta temporal (.tran) en la salida para una señal de entrada senoidal.}
+\end{figure}
