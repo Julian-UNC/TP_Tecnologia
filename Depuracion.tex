@@ -1,10 +1,7 @@
 \section{Depuración y Funcionamiento}
-\subsection{Pruebas de Laboratorio}
-Se conectó la placa a una fuente de alimentación regulada y se aplicó un generador de funciones en la entrada, midiendo la salida mediante un osciloscopio y una carga resistiva de prueba ($4\,\Omega$ / $8\,\Omega$).
 
-\subsection{Resultados Obtenidos y Mediciones}
-\begin{itemize}[label=\small\color{primary}$\blacksquare$]
-    \item \textbf{Ganancia medida:} [Insertar valor medido $V_{out}/V_{in}$].
-    \item \textbf{Potencia máxima sin distorsión:} $P_{out} = \frac{V_{rms}^2}{R_L} = \dots$
-    \item \textbf{Comportamiento térmico:} Observaciones sobre la temperatura de trabajo con el disipador seleccionado.
-\end{itemize}
+Para depurar el circuito en caso de una eventual falla es necesario hacer dos tipos de análisis, el comportamiento en contínua, sin señal de entrada, y el comportamiento con señal de entrada.
+
+El primero se realiza para verificar que el amplificador está en su punto de operación correcto, basandose en los dátos de la hoja de datos del componente. Para esto se verifica que las tensiones y corrientes son las correctas, utilizando un multímetro.
+
+Una vez que se confirma que el punto de operación es el correcto, se inyecta la señal de entrada para verificar que la amplificación es la deseada. Para ello, se mide la salida con un osciloscopio y, conociendo el valor de entrada, es posible calcular la ganancia de tensión. Esta, en el caso de el integrado TDA2030 es de 30dB en la configuración descrita en este informe

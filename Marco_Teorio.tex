@@ -21,7 +21,7 @@ T_{Jmaxseg} - T_a = P_d(R_{\theta JC} + R_{\theta CD} + R_{DA})
 R_{DA} = \frac{T_{jmaxseg} - T_a}{P_d} - (R_{\theta JC} + R_{\theta C} )
 \]
 
-El consumo de Potencia fue extraido de la siguiente grafica:
+El consumo de Potencia fue extraido de la graficavista en la figura \ref{fig:Potencia}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/CurvaPOT.png}
@@ -29,7 +29,7 @@ El consumo de Potencia fue extraido de la siguiente grafica:
     \label{fig:Potencia}
 \end{figure}
 
-Se puede ver en la Figura \ref{fig:Potencia} que dado nuestra alimentacion partida de 12V y un parlante de 8 Ohm presenta una disipacion (P_{d}) de 4.2W.
+Se puede ver en la Figura \ref{fig:Potencia} que dada la alimentacion partida de 12V utilizada (+12v y -12V) y un parlante de 8 Ohm presenta una disipacion (P_{d}) de 4.2W.
 Si bien el datasheet especifica que su $T_{jmax} = 150 {^\circ C}$, se utiliza la temperatura de shut-down estipulada a 145 ${^\circ C}$.
 Resistencia de Juntura-Encapsulado $R_{\theta J} = 3 \frac{^\circ C}{W}$.
 Resistencia de Encapsuldao-Disipador teniendo en cuenta la mica y la grasa siliconada $R_{\theta CD} = 1.2 \frac{^\circ C}{W}$.
