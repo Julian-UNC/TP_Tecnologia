@@ -3,7 +3,7 @@
 Aqui se comentaran los pasos relizados para el diseño del esquematico y por consiguiente del PCB.
 Se empezo por seleccionar al amplificador de audio TDA2030 ya que es un modelo estandar y de facil obtencion, luego se observaron los circuitos disponibles en el datasheet del componente y se eligio la aplicacion en fuente partida
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
@@ -22,19 +22,22 @@ Se empezo por seleccionar al amplificador de audio TDA2030 ya que es un modelo e
 
 Tanto R5 como C8 no fueron agregados al diseño por la siguiente razon: esta red RC, dispuesta en paralelo con la resistencia de realimentación principal (R1), tiene el propósito de crear un polo que reduce la ganancia a frecuencias muy altas (frecuencias supersónicas). Su uso se reserva para limitar el ancho de banda y mitigar riesgos de oscilación, resultando innecesario para los requisitos del trabajo.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Imagenes/PCBTDA.png}
+    \includegraphics[width=0.5\textwidth]{Imagenes/PCBTDA.png}
     \caption{Disenio de PCB}
     \label{fig:PCBTDA}
 \end{figure}
 
 Se puede ver en la Figura \ref{fig:PCBTDA} el diseño de montaje de la placa, se tuvieron en cuenta:
-- Plano de Masa
-- Pistas de ancho minimo de 1mm.
-- Distribucion de componentes en funcion de su uso y enpaquetado
-- Colocado de las Borneras en el extremo de la placa
-- Colocado del Amplificador en los extremos de la placa para el anexo de su disipador
-- Montaje de la resistencia de R4 a distancia suficiente de los componentes para evitar calentamientos
+
+  \begin{itemize}
+    \item Plano de Masa
+    \item Pistas de ancho minimo de 1mm
+    \item Distribucion de componentes en funcion de su uso y enpaquetado
+    \item Colocado de las Borneras en el extremo de la placa
+    \item Colocado del Amplificador en los extremos de la placa para el anexo de su disipador
+    \item Montaje de la resistencia de R4 a distancia suficiente de los componentes para evitar calentamientos
+  \end{itemize}
 
 Una vez terminado este proceso se genera un archivo pdf en el cual se encuentran 4 copias del PCB en escala 1:1, de color monocromatico y con las capas dibujadas de "Bottom Cupper"(B.Cu, Cobre por debajo) y $"Edge.Cuts"$ (Cortes de esquina)

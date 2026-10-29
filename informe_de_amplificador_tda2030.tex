@@ -1,18 +1,55 @@
 \documentclass[11pt, a4paper]{article}
-\usepackage[a4paper, margin=2.5cm, headheight=14pt]{geometry}
+% =========================================================================
+% 1. TIPOGRAFÍA, IDIOMA Y CODIFICACIÓN
+% =========================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish, es-tabla]{babel}
+\usepackage{newtxtext}  % Tipografía Times New Roman para el texto
+\usepackage{csquotes}   % Manejo correcto de comillas según el idioma
 
+% =========================================================================
+% 2. CONFIGURACIÓN DE PÁGINA Y DISEÑO DE MAQUETA
+% =========================================================================
+\usepackage[a4paper, margin=1in, headheight=14pt]{geometry}
+\usepackage{fancyhdr}   % Control de encabezados y pies de página
+\usepackage{titlesec}   % Personalización del formato de títulos
+\usepackage{multicol}   % Soporte para texto en múltiples columnas
+
+% =========================================================================
+% 3. COLORES, GRÁFICOS Y ELEMENTOS FLOTANTES
+% =========================================================================
+\usepackage[table, xcdraw]{xcolor} % Gestión de colores y soporte para tablas coloreadas
+\usepackage{graphicx}
+\usepackage{subcaption} % Permite subfiguras dentro de un entorno figure
+\usepackage{float}      % Permite usar [H] para fijar imágenes y tablas
+\usepackage{standalone} % Permite compilar o incluir archivos LaTeX individuales
+
+% =========================================================================
+% 4. MATEMÁTICAS, CIRCUITOS Y UNIDADES
+% =========================================================================
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{booktabs}
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usepackage{enumitem}
-\usepackage{fancyhdr}
-\usepackage{titlesec}
-\usepackage[colorlinks=true, linkcolor=primary, urlcolor=primary, citecolor=primary]{hyperref}
+\usepackage{mathtools}
+\usepackage[siunitx, american]{circuitikz} % Dibujo de circuitos eléctricos y uso de siunitx
+
+% =========================================================================
+% 5. TABLAS Y LISTAS ENRIQUECIDAS
+% =========================================================================
+\usepackage{booktabs}   % Tablas con acabado profesional (\toprule, \midrule, etc.)
+\usepackage{multirow}   % Celdas que ocupan múltiples filas en tablas
+\usepackage{enumitem}   % Control avanzado de viñetas y listas numéricas
+
+% =========================================================================
+% 6. BIBLIOGRAFÍA (Descomenta si vas a usar Biber/BibLaTeX)
+% =========================================================================
+%\usepackage[backend=biber, style=numeric]{biblatex}
+
+% =========================================================================
+% 7. SISTEMA DE ENLACES Y REFERENCIAS (¡Mantener este orden estricto!)
+% =========================================================================
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black, filecolor=black]{hyperref}
+\usepackage{cleveref}   % Referencias inteligentes automáticas (ej: \cref{fig:ejemplo})
 
 % Definición de paleta de colores institucional / académica
 \definecolor{primary}{RGB}{15, 76, 129}      % Azul clásico institucional
@@ -41,6 +78,8 @@
 \renewcommand{\footrulewidth}{0.4pt}
 
 \begin{document}
+
+\input{portada}
 
 % ==============================================================================
 % PORTADA (Omitida aquí por brevedad, usa la tuya anterior)
@@ -75,7 +114,8 @@
 \input{Diseno_KiCad}
 \input{Simulacion}
 \input{Montaje}
-\input{Depuracion}
+%\input{Depuracion}
+\newpage
 \input{Conclusion}
 % ... tus inputs o secciones ...
 

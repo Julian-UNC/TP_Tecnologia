@@ -9,18 +9,54 @@ El proceso de fabricación de la PCB consta de los siguientes pasos, luego del d
   \item Depuración de la placa
 \end{itemize}
 
-Debido a su extención y relevancia, la depuración tendrá su propio apartado, el resto de los items se dearrollarán a continuación.
-
 \subsection{Transferencia del Impreso}
 
 Para transferir las pistas del impreso a la placa, se pegó el impreso al cobre de la placa, de manera que las pistas queden en contacto con este, y se calentó con una plancha eléctrica apoyando sobre el papel. Una vez transferídas las pistas se lavó la placa en agua fría para retirar el exceso de papel y se sumergió en un recipiente con cloruro férrico a baño maría.
 
 \subsection{Limpieza y Perforación}
 
-Una vez que el cloruro retiró el cobre expuesto de la placa, se retiró la placa, se limió el cloruro y se expuso el cobre lijando la capa protectora de las pistas con virulana. Con la PCB limpia se hicieron las perforaciones necesarias para introducir los componentes de montaje perforante, utilizando una broca de 1 mm.
+Una vez que el cloruro retiró el cobre expuesto de la placa, se retiró la placa, se limpió el cloruro y se expuso el cobre lijando la capa protectora de las pistas con virulana. Con la PCB limpia se hicieron las perforaciones necesarias para introducir los componentes de montaje perforante, utilizando una broca de 1 mm.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width= 0.5\linewidth]{Imagenes/WhatsApp Image 2026-10-29 at 12.18.25 (2).jpeg}
+  \caption{Placa de cobre con las pistas definidas}
+\end{figure}
 
 \subsection{Soldado de Componentes}
 
-Se empezó soldando los componentes de menor altura sobre elmontaje hacia los de mayor altura, de manera que se sosstuvieran correctamente el componente que se estuviera soldando en el momento, por ejemplo, se soldaron primero las resistencias, de manera que estan estuvieran apoyadas sobre la superficie de trabajo, luego los capacitores, ya que son más altos y así sucesivamente.
+Se empezó soldando los componentes de menor altura sobre el montaje hacia los de mayor altura, de manera que se sostuvieran correctamente el componente que se estuviera soldando en el momento, por ejemplo, se soldaron primero las resistencias, de manera que estan estuvieran apoyadas sobre la superficie de trabajo, luego los capacitores, ya que son más altos y así sucesivamente.
 
 Como el amplificador es el elemento más sensible a la temperatura, a la vez que es el componente más alto, se soldó una vez se hubieran soldado el resto de los componentes, para proteger el integrado.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Imagenes/WhatsApp Image 2026-10-29 at 12.18.26 (1).jpeg}
+  \caption{Proceso de soldado de los componentes}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Imagenes/palca.jpeg}
+  \caption{Placa terminada con disipador instalado}
+\end{figure}
+
+\subsection{Depuración de la Placa}
+
+Para depurar el circuito en caso de una eventual falla es necesario hacer dos tipos de análisis, el comportamiento en contínua, sin señal de entrada, y el comportamiento con señal de entrada.
+
+El primero se realiza para verificar que el amplificador está en su punto de operación correcto, basandose en los dátos de la hoja de datos del componente. Para esto se verifica que las tensiones y corrientes son las correctas, utilizando un multímetro.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{Imagenes/WhatsApp Image 2026-10-29 at 12.18.25 (1).jpeg}
+  \caption{Alimentación utilizada}
+\end{figure}
+
+Una vez que se confirma que el punto de operación es el correcto, se inyecta la señal de entrada para verificar que la amplificación es la deseada. Para ello, se mide la salida con un osciloscopio y, conociendo el valor de entrada, es posible calcular la ganancia de tensión. Esta, en el caso de el integrado TDA2030 es de 30dB en la configuración descrita en este informe.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{Imagenes/WhatsApp Image 2026-10-29 at 12.18.25.jpeg }
+  \caption{Salida amplificada con entrada de 10 mV pico}
+\end{figure}
